@@ -3,5 +3,6 @@
   $(".select").select2();
 <%else%>
   $("#contact_list").html('<%= escape_javascript(render :partial => "contacts/contact_list", :locals => {:@contacts => @contacts}) %>')
+  $("#popup1, #overlay1").fadeOut();
 <% end %>
 
