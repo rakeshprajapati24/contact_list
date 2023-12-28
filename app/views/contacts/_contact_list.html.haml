@@ -1,0 +1,21 @@
+%tr
+  %th Name
+  %th Contact Number
+  - @contacts.each do |f|
+    %tr.show-popup{id: f.id}
+      %td= f.name 
+      %td= f.contact_no
+
+%script{src: "https://code.jquery.com/jquery-3.6.4.min.js"}
+:javascript
+  $(document).ready(function() {
+    $(".show-popup").click(function() {
+      $("#popup, #overlay").fadeIn();
+      var id = $(this).attr('id');
+      $.getScript('/show_contact?id=' + id);
+    });
+
+    $("#close-btn, #overlay").click(function() {
+      $("#popup, #overlay").fadeOut();
+    });
+  });

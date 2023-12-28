@@ -1,0 +1,7 @@
+<% if @contact.errors.present? %>
+  $("#new").html('<%= escape_javascript(render :partial => "contacts/form", :locals => {:@contact => @contact}) %>')
+  $(".select").select2();
+<%else%>
+  $("#contact_list").html('<%= escape_javascript(render :partial => "contacts/contact_list", :locals => {:@contacts => @contacts}) %>')
+<% end %>
+

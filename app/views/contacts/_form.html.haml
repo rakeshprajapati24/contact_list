@@ -1,0 +1,11 @@
+= form_for(@contact, :remote => true) do |f|
+
+  %p
+    = f.label :name
+    = f.text_field :name
+
+  %p
+    = f.label :contact_no
+    = f.text_field :contact_no
+
+    = f.submit
