@@ -24,7 +24,10 @@ class ContactsController < ApplicationController
   end 
 
   def search
-    @contacts = Contact.where("name LIKE ? OR contact_no LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    search = params[:query].downcase.split("")
+
+    @contacts = Contact.where(search.map { |f| Contact.arel_table[:name].lower.matches("%#{f}%").or(Contact.arel_table[:contact_no].matches("%#{f}%")) }.inject(:or))
+
     respond_to do |format| 
       format.js
     end

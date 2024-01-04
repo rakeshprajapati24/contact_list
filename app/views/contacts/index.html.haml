@@ -16,50 +16,21 @@
   #overlay
 
   %h1 Contact List
-  / Search Bar
   #search-bar
     %label{for: "search"} Search:
     %input#search{oninput: "searchContacts(this.value)", type: "text" ,:autocomplete =>"off",:placeholder => "Search"}/
-  / Keypad
   #keypad
     %button.key{onclick: "updateSearch('1')"} 1
-    %button.key{onclick: "updateSearch('2')"} 2
-    %button.key{onclick: "updateSearch('3')"} 3
-    %button.key{onclick: "updateSearch('4')"} 4
-    %button.key{onclick: "updateSearch('5')"} 5
-    %button.key{onclick: "updateSearch('6')"} 6
-    %button.key{onclick: "updateSearch('7')"} 7
-    %button.key{onclick: "updateSearch('8')"} 8
-    %button.key{onclick: "updateSearch('9')"} 9
-    %button.key{onclick: "updateSearch('*')"} *
+    %button.key{onclick: "updateSearch('2ABC')"} 2ABC
+    %button.key{onclick: "updateSearch('3DEF')"} 3DEF
+    %button.key{onclick: "updateSearch('4GHI')"} 4GHI
+    %button.key{onclick: "updateSearch('5JKL')"} 5JKL
+    %button.key{onclick: "updateSearch('6MNO')"} 6MNO
+    %button.key{onclick: "updateSearch('7PQRS')"} 7PQRS
+    %button.key{onclick: "updateSearch('8TUV')"} 8TUV
+    %button.key{onclick: "updateSearch('9WXYZ')"} 9WXYZ
     %button.key{onclick: "updateSearch('0')"} 0
-    %button.key{onclick: "updateSearch('#')"} #
-    %button.key{onclick: "updateSearch('A')"} A
-    %button.key{onclick: "updateSearch('B')"} B
-    %button.key{onclick: "updateSearch('C')"} C
-    %button.key{onclick: "updateSearch('D')"} D
-    %button.key{onclick: "updateSearch('E')"} E
-    %button.key{onclick: "updateSearch('F')"} F
-    %button.key{onclick: "updateSearch('G')"} G
-    %button.key{onclick: "updateSearch('H')"} H
-    %button.key{onclick: "updateSearch('I')"} I
-    %button.key{onclick: "updateSearch('J')"} J
-    %button.key{onclick: "updateSearch('K')"} K
-    %button.key{onclick: "updateSearch('L')"} L
-    %button.key{onclick: "updateSearch('M')"} M
-    %button.key{onclick: "updateSearch('N')"} N
-    %button.key{onclick: "updateSearch('O')"} O
-    %button.key{onclick: "updateSearch('P')"} P
-    %button.key{onclick: "updateSearch('Q')"} Q
-    %button.key{onclick: "updateSearch('R')"} R
-    %button.key{onclick: "updateSearch('S')"} S
-    %button.key{onclick: "updateSearch('T')"} T
-    %button.key{onclick: "updateSearch('U')"} U
-    %button.key{onclick: "updateSearch('V')"} V
-    %button.key{onclick: "updateSearch('W')"} W
-    %button.key{onclick: "updateSearch('X')"} X
-    %button.key{onclick: "updateSearch('Y')"} Y
-    %button.key{onclick: "updateSearch('Z')"} Z
+   
 
   %table#contact_list
     = render :partial => "contacts/contact_list"

@@ -1,21 +1,28 @@
 
+var alpha = '';
+
 function updateSearch(value) {
   const searchInput = document.getElementById('search');
-  
-  if (value.length === 1 && /[A-Z]/.test(value)) {
-    searchInput.value += value;
-  } else {
-    searchInput.value += value;
-  }
 
-  searchContacts(searchInput.value);
+  var number = value.replace(/\D/g, '');
+
+  var alphabet = value.replace(/[^A-Za-z]/g, '');
+
+  searchInput.value += number;
+
+  alpha += alphabet;
+
+  searchContacts(alpha + searchInput.value);
 }
-
 
 function searchContacts(query) {
-  $.getScript('/search?query='+query)
-  console.log(query); 
+  $.getScript('/search?query=' + query);
+  console.log(query);
 }
+
+
+
+
 
 $(document).ready(function() {
   $(".add-record").click(function() {
