@@ -24,9 +24,15 @@ class ContactsController < ApplicationController
   end 
 
   def search
-    search = params[:query].downcase.split("")
+    digit = params[:query]
+    letters = letter_combinations(digit)
+    @contacts = if letters.present?
+              conditions = letters.map { |letter| "LOWER(name) LIKE '#{letter}%'" }.join(' OR ')
+              Contact.where("LOWER(name) LIKE '%#{digit.downcase}%' OR #{conditions} OR contact_no LIKE '%#{digit}%'")
+            else
+              Contact.where("LOWER(name) LIKE '%#{digit.downcase}%' OR contact_no LIKE '%#{digit}%'")
+            end
 
-    @contacts = Contact.where(search.map { |f| Contact.arel_table[:name].lower.matches("%#{f}%").or(Contact.arel_table[:contact_no].matches("%#{f}%")) }.inject(:or))
 
     respond_to do |format| 
       format.js
@@ -44,6 +50,22 @@ class ContactsController < ApplicationController
 
   def params_contact
     params.require(:contact).permit!
+  end
+
+  def letter_combinations(digits)
+    return [] if digits.empty?
+
+    number_map = ["abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+
+    digits.chars.reduce([""]) do |combinations, digit|
+      next_combinations = []
+
+      if ('2'..'9').include?(digit)
+        letters = number_map[digit.to_i - 2]
+        next_combinations += combinations.product(letters.chars).map(&:join)
+      end
+      next_combinations
+    end
   end
 
 end

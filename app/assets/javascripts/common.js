@@ -5,20 +5,20 @@ function updateSearch(value) {
   const searchInput = document.getElementById('search');
 
   var number = value.replace(/\D/g, '');
+  var alphabet = value.replace(/[^A-Za-z]/g, ''); 
 
-  var alphabet = value.replace(/[^A-Za-z]/g, '');
+  searchInput.value = searchInput.value + number;
 
-  searchInput.value += number;
+  alpha = alphabet;
 
-  alpha += alphabet;
-
-  searchContacts(alpha + searchInput.value);
+  searchContacts(searchInput.value);
 }
 
 function searchContacts(query) {
   $.getScript('/search?query=' + query);
   console.log(query);
 }
+
 
 
 
